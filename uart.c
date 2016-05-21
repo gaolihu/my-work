@@ -213,7 +213,7 @@ static void *uart_info_upgrade_task(void *arg)
 			upgradeInfo.iDataLen = 0;		//continue
 			upgradeInfo.lMsgType = MSG_TYPE_UPGRADE_ISR;
 			sendMsg(upgradeId, &upgradeInfo);
-			
+
 		} else {
 			printf("*****packet size~persize~buf[286]: %d, buf[284]~k: %d, buf[285]~j: %d ===========\n", buf[286], buf[284], buf[285]);
 			uinfo->data_send[1] = buf[286] + buf[285]; 		//single packet size
@@ -225,7 +225,7 @@ static void *uart_info_upgrade_task(void *arg)
 			uinfo->data_send[4] = buf[282];
 			uinfo->data_send[5] = buf[283];
 			uinfo->funcID = FuncID_System_UpGrade;
-			
+
 			uinfo->data_send[287] = 0x89;
 			ret = uart_info_send_func(uinfo, FuncID_System_UpGrade, 0x30, uart_upgrade_sig_handler);
 			if (ret != 0) {
